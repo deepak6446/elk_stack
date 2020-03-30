@@ -1,6 +1,6 @@
 # Why ELK stack is so popular?
 
-The ELK Stack is popular because it fulfills a need in the log management and analytics space. Monitoring modern applications and the IT infrastructure they are deployed on requires a log management and analytics solution that enables engineers to overcome the challenge of monitoring what are highly distributed, dynamic and noisy environments.
+The ELK Stack is popular because it fulfills a need in the log management and analytics space. Monitoring modern applications and the IT infrastructure they are deployed on, requires a log management and analytics solution that enables engineers to overcome the challenge of monitoring what are highly distributed, dynamic and noisy environments.
 
 Logs send from multiple distributed servers can be stored at a centralized data store that can scale as data grows, and that provides a set of tools to analyze the data.
 
@@ -16,35 +16,42 @@ Logs send from multiple distributed servers can be stored at a centralized data 
 
 1. [Requirements](#requirements)
     * [JAVA 8](#Java-8)
-    * [Homebrew 2.X.X](#Homebrew 2.X.X)
+    * [Homebrew 2.X.X](#Homebrew-2.X.X)
 
-2. [ELK Installtion](#ELK_Installtion)
-    * Elasticsearch
+2. [ELK Installation](#ELK_Installtion)
+    * Elasticsearch </br>
     brew install elasticsearch 
-    * Logstash
+    * Logstash </br>
     brew install logstash
-    * Kibana
+    * Kibana </br>
     brew install kibana
 3. Start Services 
-  * Elasticsearch 
+  * Elasticsearch </br> 
   brew services start elasticsearch
-  * Logstash
+  * Logstash </br>
   brew services start logstash
-  * Kibana
+  * Kibana </br>
   brew services start kibana
 
-4. Configure Kibana to start visulizing logs.
-  open Kibana configuration file and uncomment server.port and elasticsearch.url for kibana to start listening on 5601
+4. Configure Kibana to start visualizing logs.
+  open Kibana configuration file and uncomment server.port and elasticsearch.hosts for kibana to start listening on 5601
   ```console
   $ sudo vi /usr/local/etc/kibana/kibana.yml
   ```
+5. open http://localhost:5601/status. 
+   if you have successfully installed ELK stack you should see kibana status as green
 
 5. Sending data to view in Kibana
-  * follow [file](https://github.com/deepak6446/elk_stack/blob/master/logstash.conf) to configure logs files to send log to elasticsearch for visualization.
-  * copy [file](https://github.com/deepak6446/elk_stack/blob/master/logstash.conf) to ```/etc/logstash/conf.d/syslog.conf  ```
+  * Follow [file](https://github.com/deepak6446/elk_stack/blob/master/syslog.conf) to configure logs files to send log to elasticsearch for visualization.
+  * copy [file](https://github.com/deepak6446/elk_stack/blob/master/syslog.conf) to ```/usr/local/Cellar/logstash/7.6.1/libexec/config/syslog.conf```
+  * Verify your configuration file 
+  ```/usr/local/Cellar/logstash/7.6.1/bin/logstash --config.test_and_exit -f  /usr/local/Cellar/logstash/7.6.1/libexec/config/syslog.conf```
 
 6. Restart service
   * brew services restart logstash
+  or
+  * specify config file and start  
+  ```/usr/local/Cellar/logstash/7.6.1/bin/logstash -f /usr/local/Cellar/logstash/7.6.1/libexec/config/syslog.conf```
 
 we can now view syslogs in Kibana with the index provided in [file](https://github.com/deepak6446/elk_stack/blob/master/logstash.conf)
 
