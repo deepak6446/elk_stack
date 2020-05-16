@@ -1,3 +1,4 @@
+Medium: https://medium.com/make-it-heady/what-and-why-ekl-stack-378e6c4765b9
 # Why ELK stack is so popular?
 
 The ELK Stack is popular because it fulfills a need in the log management and analytics space. Monitoring modern applications and the IT infrastructure they are deployed on, requires a log management and analytics solution that enables engineers to overcome the challenge of monitoring what are highly distributed, dynamic and noisy environments.
@@ -42,8 +43,8 @@ Logs send from multiple distributed servers can be stored at a centralized data 
    if you have successfully installed ELK stack you should see kibana status as green
 
 5. Sending data to view in Kibana
-  * Follow [file](https://github.com/deepak6446/elk_stack/blob/master/syslog.conf) to configure logs files to send log to elasticsearch for visualization.
-  * copy [file](https://github.com/deepak6446/elk_stack/blob/master/syslog.conf) to ```/usr/local/Cellar/logstash/7.6.1/libexec/config/syslog.conf```
+  * Follow [file](https://github.com/deepak6446/elk_stack/blob/master/logstash_config/syslog.conf) to configure logs files to send log to elasticsearch for visualization.
+  * copy [file](https://github.com/deepak6446/elk_stack/blob/master/logstash_config/syslog.conf) to ```/usr/local/Cellar/logstash/7.6.1/libexec/config/syslog.conf```
   * Verify your configuration file 
   ```/usr/local/Cellar/logstash/7.6.1/bin/logstash --config.test_and_exit -f  /usr/local/Cellar/logstash/7.6.1/libexec/config/syslog.conf```
 
@@ -52,6 +53,13 @@ Logs send from multiple distributed servers can be stored at a centralized data 
   or
   * specify config file and start  
   ```/usr/local/Cellar/logstash/7.6.1/bin/logstash -f /usr/local/Cellar/logstash/7.6.1/libexec/config/syslog.conf```
+
+
+'''''''
+change filebeat config file in 
+/usr/local/etc/filebeat/filebeat.yml
+brew services restart filebeat
+'''''
 
 we can now view syslogs in Kibana with the index provided in [file](https://github.com/deepak6446/elk_stack/blob/master/logstash.conf)
 
