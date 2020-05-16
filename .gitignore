@@ -1,4 +1,4 @@
 
 nodejs_server/node_modules
-./nodejs_server/*.log
-/nodejs_server/.*audit.json
+nodejs_server/*.log
+nodejs_server/.*audit.json
