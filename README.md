@@ -37,7 +37,7 @@ Logs send from multiple distributed servers can be stored at a centralized data 
 4. Configure Kibana to start visualizing logs.
   open Kibana configuration file and uncomment server.port and elasticsearch.hosts for kibana to start listening on 5601
   ```console
-  $ sudo vi /usr/local/etc/kibana/kibana.yml
+  $ sudo vim /usr/local/etc/kibana/kibana.yml
   ```
 5. open http://localhost:5601/status. 
    if you have successfully installed ELK stack you should see kibana status as green
@@ -62,6 +62,16 @@ brew services restart filebeat
 '''''
 
 we can now view syslogs in Kibana with the index provided in [file](https://github.com/deepak6446/elk_stack/blob/master/logstash.conf)
+
+## LoadTesting with jmeter
+
+1. run cleanup script
+
+2. run nodejs server in cluster mode
+```NODE_ENV=production ./node_modules/.bin/pm2 start src/index.js -i 10```
+
+3. load test with jmeter file 
+```jmeterRequest.jmx```
 
 ## TODO 
 1. Dockerised container for ELK stack.

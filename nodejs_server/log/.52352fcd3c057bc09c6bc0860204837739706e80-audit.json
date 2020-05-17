@@ -1,0 +1,14 @@
+{
+    "keep": {
+        "days": true,
+        "amount": 14
+    },
+    "auditLog": "/Users/deepakpoojari/Desktop/deepak_code/elk_stack/nodejs_server/log/.52352fcd3c057bc09c6bc0860204837739706e80-audit.json",
+    "files": [
+        {
+            "date": 1589717474700,
+            "name": "/Users/deepakpoojari/Desktop/deepak_code/elk_stack/nodejs_server/log/application-2020-05-17-17.log",
+            "hash": "81397b26ac2d3dfa224ca7d2eff97ce2"
+        }
+    ]
+}
