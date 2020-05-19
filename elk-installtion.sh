@@ -1,8 +1,11 @@
+# install git
+sudo yum install git
+
 # add Elastic’s signing key
 wget -qO - https://artifacts.elastic.co/GPG-KEY-elasticsearch | sudo apt-key add -
 
-sudo apt-get update
-sudo apt-get install apt-transport-https
+sudo yum update
+sudo yum install apt-transport-https
 
 # add repository definition
 echo "deb https://artifacts.elastic.co/packages/7.x/apt stable main" | sudo tee -a /etc/apt/sources.list.d/elastic-7.x.list
@@ -10,8 +13,8 @@ echo "deb https://artifacts.elastic.co/packages/7.x/apt stable main" | sudo tee 
 echo "deb https://artifacts.elastic.co/packages/oss-7.x/apt stable main" | sudo tee -a /etc/apt/sources.list.d/elastic-7.x.list
 
 # install Elasticsearch
-sudo apt-get update
-sudo apt-get install elasticsearch
+sudo yum update
+sudo yum install elasticsearch
 
 # verify config and restart server 
 # sudo vim /etc/elasticsearch/elasticsearch.yml
@@ -24,12 +27,12 @@ sudo apt-get install elasticsearch
 # curl http://localhost:9200
 
 # Installing Logstash
-sudo apt-get install default-jre
+sudo yum install default-jre
 java -version
-sudo apt-get install logstash
+sudo yum install logstash
 
 # Installing Kibana
-sudo apt-get install kibana
+sudo yum install kibana
 
 # Kibana configuration file at: /etc/kibana/kibana.yml, 
 # server.port: 5601
