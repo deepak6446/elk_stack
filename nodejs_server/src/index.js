@@ -33,4 +33,4 @@ process
     console.log(err, 'Uncaught Exception thrown');
   });
 
-app.listen(port, () => logger.info(`Example app listening on port ${port}!`))
+app.listen(port, '0.0.0.0', () => logger.info(`Example app listening on port ${port}!`))
