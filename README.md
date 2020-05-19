@@ -67,11 +67,49 @@ we can now view syslogs in Kibana with the index provided in [file](https://gith
 
 1. run cleanup script
 
-2. run nodejs server in cluster mode
+2. run nodejs server in cluster mode </br>
 ```NODE_ENV=production ./node_modules/.bin/pm2 start src/index.js -i 10```
 
-3. load test with jmeter file 
+3. load test with jmeter file </br>
 ```jmeterRequest.jmx```
+
+# Create new index
+Management --> index pattern --> create index
+
+# APM tool
+> http://localhost:5601/app/kibana#/home/tutorial/apm?_g=() </br>
+> sends metric every 30 sec
+
+1. download on mac </br>
+curl -L -O https://artifacts.elastic.co/downloads/apm-server/apm-server-6.8.7-darwin-x86_64.tar.gz </br>
+location: /Users/deepakpoojari/apm-server-6.8.7-darwin-x86_64
+
+2. Test config </br>
+./apm-server test config
+
+3. Start APM Server </br>
+./apm-server -e
+
+4. Configure the agent </br>
+```
+require('elastic-apm-node').start({
+  // Override service name from package.json
+  // Allowed characters: a-z, A-Z, 0-9, -, _, and space
+  serviceName: '',
+
+  // Use if APM Server requires a token
+  secretToken: '',
+
+  // Set custom APM Server URL (default: http://localhost:8200)
+  serverUrl: ''
+})
+
+```
+
+
+
+
+
 
 ## TODO 
 1. Dockerised container for ELK stack.

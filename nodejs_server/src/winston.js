@@ -8,7 +8,7 @@ const logBasePath = path.normalize(basedir)
 // rotate log when max file size is reached.
 // TODO: change to config based
 const transport = new (winston.transports.DailyRotateFile)({
-    filename: logBasePath+'application-%DATE%.log',
+    filename: logBasePath+'application-%DATE%.json',
     datePattern: 'YYYY-MM-DD-HH',
     zippedArchive: true,
     maxSize: '200000m',      //configure to keep min logs

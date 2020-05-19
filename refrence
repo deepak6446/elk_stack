@@ -1,1 +1,11 @@
+list all index
+curl http://localhost:9200/_aliases
+
+delete index
+curl -XDELETE http://localhost:9200/index_name
+
 http://localhost:5601/app/kibana#/home?_g=()
+http://localhost:5601/app/kibana#/home/tutorial/apm?_g=()
+
+elastic search production setup:
+https://dzone.com/articles/elasticsearch-tutorial-creating-an-elasticsearch-c
