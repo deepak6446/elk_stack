@@ -1,5 +1,6 @@
 // initialize elastic apm
 // to disable : process.env.ELASTIC_APM_ACTIVE=true
+
 require('elastic-apm-node').start({
     serviceName: 'index-elk-stack-test-server-apm',
     serverUrl: 'http://localhost:8200'   //APM Server URL
@@ -23,5 +24,13 @@ app.post('/generate/logs', (req, res) => {
         res.status(400).send('ok');   
     }, utils.randomInt(min, max));
 });
+
+process
+  .on('unhandledRejection', (reason, p) => {
+    console.log(reason, 'Unhandled Rejection at Promise', p);
+  })
+  .on('uncaughtException', err => {
+    console.log(err, 'Uncaught Exception thrown');
+  });
 
 app.listen(port, () => logger.info(`Example app listening on port ${port}!`))

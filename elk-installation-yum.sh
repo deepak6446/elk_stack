@@ -25,6 +25,19 @@ sudo systemctl enable --now elasticsearch.service
 curl http://127.0.0.1:9200 
 
 sudo yum -y install kibana
+# chnage server ip to 0.0.0.0
 sudo systemctl enable --now kibana
 
 sudo yum -y install logstash
+
+systemctl list-unit-files | grep enabled
+
+curl -L -O https://artifacts.elastic.co/downloads/apm-server/apm-server-7.7.0-x86_64.rpm
+sudo rpm -vi apm-server-7.7.0-x86_64.rpm
+
+sudo lsof -i -P -n | grep LISTEN
+
+curl -L -O https://artifacts.elastic.co/downloads/apm-server/apm-server-7.7.0-x86_64.rpm
+sudo rpm -vi apm-server-7.7.0-x86_64.rpm
+sudo service apm-server start
+
