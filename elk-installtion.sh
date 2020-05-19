@@ -2,7 +2,7 @@
 sudo yum install git
 
 # add Elastic’s signing key
-wget -qO - https://artifacts.elastic.co/GPG-KEY-elasticsearch | sudo apt-key add -
+sudo wget  -qO /home/ec2-user/em "https://artifacts.elastic.co/GPG-KEY-elasticsearch";sudo rpm --import /home/ec2-user/em
 
 sudo yum update
 sudo yum install apt-transport-https
